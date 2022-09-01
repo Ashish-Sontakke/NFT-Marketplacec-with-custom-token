@@ -1,16 +1,19 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-// Stable coins.
-// USDC USDT DAI
 
 interface IMarketplace {
-    event Listed(uint256 tokenId, uint256 price);
-    event Bought(uint256 tokenId, address owners);
+    event Listed(uint256 tokenId, uint256 price, address seller);
+
+    event Bought(uint256 tokenId, uint256 price, address buyer);
+
+    event PriceChanged(uint256 itemId, uint256 newPrice);
 
     function listForSale(uint256 tokenId, uint256 price) external;
 
-    function buy(uint256 tokenId) external payable;
+    function buy(uint256 itemId) external;
 
-    function changePrice(uint256 tokenId, uint256 newPrice) external;
+    function updatePrice(uint256 tokenId, uint256 newPrice) external;
 }
+
+contract THisContract {}
